@@ -1,5 +1,14 @@
 #faintColor{
-    background-color: rgba(228, 194, 131, 0.788);
+    background-color: rgba(231, 222, 207, 0.788);
+   
+}
+.stripped{
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
-    color:green;
+.aboutMe{
+    margin-top: 12%;
+    margin-left: 10%;
+    margin-right: 10%;
 }

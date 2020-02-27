@@ -46,3 +46,11 @@ hr.hr-fade{
 .rel{
     position: relative;
 }
+.outset{
+    border-style: outset;
+    border-color: bisque;
+}
+.inset{
+    border-style: inset;
+    border-color:bisque;
+}

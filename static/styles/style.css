@@ -5,6 +5,8 @@
 .stripped{
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
+    margin-right:0;
 }
 
 .aboutMe{
@@ -53,4 +55,13 @@ hr.hr-fade{
 .inset{
     border-style: inset;
     border-color:bisque;
+}
+.hidden{
+    visibility: hidden;
+}
+
+
+.ilb{
+    width: fit-content;
+    margin: 0 auto;
 }

@@ -1,5 +1,6 @@
+@import "boostrap";
 #faintColor{
-    background-color: rgba(211, 211, 211, 0.788);
+    background-color: rgba(255, 255, 255, 0.788);
    
 }
 .stripped{
@@ -42,6 +43,7 @@ hr.hr-fade{
 .card-limit{
     max-width: 500px;
     max-height: 480px;
+    
     margin: 1in auto;
     font-weight: bold;
 }
@@ -51,10 +53,12 @@ hr.hr-fade{
 .outset{
     border-style: outset;
     border-color: rgb(182, 182, 182);
+    border-bottom: hidden;
 }
 .inset{
     border-style: inset;
     border-color:rgb(182, 182, 182);
+    border-top: hidden;
 }
 .hidden{
     visibility: hidden;
@@ -82,3 +86,40 @@ hr.hr-fade{
   .np{
       margin: 0;
   }
+  .img-center{
+    display: block;
+    width: 60%;
+    margin: auto;
+  }
+  
+  @media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}

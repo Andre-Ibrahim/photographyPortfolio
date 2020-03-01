@@ -21,14 +21,10 @@
     </div>
 </section>
 <div class="container bg-light p-3">
-    <div class="row flex">
+    <div class="card-columns">
 
         {%for src in albumImg %}
-        {% if loop.index - 1  % ImgPerCol == 0 %}
-        
-        <div class="column col-md-4 np">
-        {% endif %}
-        <div class="m-0 np">
+        <div class="m-0">
             <div class="card mb-4 box-shadow flex">
                 <img class="card-img-top" src="{{src}}" alt="">
                 <div class="card-body">
@@ -38,16 +34,10 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-sm btn-outline-secondary">See Album</button>
                         <small class="text-muted">2017</small>
-
-
                     </div>
                 </div>
-
             </div>
         </div>
-        {% if loop.index - 1 % ImgPerCol == ImgPerCol - 1 %}
-        </div>
-        {% endif %}
 
         {% endfor %}
 
@@ -58,7 +48,3 @@
 
 
 {% endblock %}
-
-<a href="../static/Pictures/IMG_1191.JPG"></a>
-<a href="../static/Pictures/IMG_1190.JPG"></a>
-<a href="../static/Pictures/DSC_0930.jpg"></a>

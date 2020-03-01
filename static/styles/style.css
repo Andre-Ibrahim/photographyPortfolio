@@ -1,5 +1,5 @@
 #faintColor{
-    background-color: rgba(231, 222, 207, 0.788);
+    background-color: rgba(211, 211, 211, 0.788);
    
 }
 .stripped{
@@ -50,11 +50,11 @@ hr.hr-fade{
 }
 .outset{
     border-style: outset;
-    border-color: bisque;
+    border-color: rgb(182, 182, 182);
 }
 .inset{
     border-style: inset;
-    border-color:bisque;
+    border-color:rgb(182, 182, 182);
 }
 .hidden{
     visibility: hidden;
@@ -65,3 +65,20 @@ hr.hr-fade{
     width: fit-content;
     margin: 0 auto;
 }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .np{
+      margin: 0;
+  }

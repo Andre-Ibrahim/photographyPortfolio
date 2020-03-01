@@ -1,0 +1,64 @@
+{%extends "base.html"%}
+
+
+
+{% block content %}
+
+
+
+<section class="jumbotron text-center mb-0 font">
+    <div class="container">
+        <h1 class="jumbotron-heading">Albums</h1>
+        <p class="mx-lg-2 text-justify">
+            Here are all the albums I worked on over the years. , Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Sit illo recusandae dicta enim officia vel ipsum laborum? Facere cupiditate, 
+            perferendis in fugit nam maiores eaque repellendus temporibus quas, nobis laboriosam!
+        </p>
+        <p>
+            <a href="/contact" class="btn btn-primary my-2">Contact Me</a>
+        </p>
+
+    </div>
+</section>
+<div class="container bg-light p-3">
+    <div class="row flex">
+
+        {%for src in albumImg %}
+        {% if loop.index - 1  % ImgPerCol == 0 %}
+        
+        <div class="column col-md-4 np">
+        {% endif %}
+        <div class="m-0 np">
+            <div class="card mb-4 box-shadow flex">
+                <img class="card-img-top" src="{{src}}" alt="">
+                <div class="card-body">
+                    <p class="card-text">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta, accusamus, minus voluptates unde autem explicabo aliquam
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">See Album</button>
+                        <small class="text-muted">2017</small>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% if loop.index - 1 % ImgPerCol == ImgPerCol - 1 %}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+<a href="../static/Pictures/IMG_1191.JPG"></a>
+<a href="../static/Pictures/IMG_1190.JPG"></a>
+<a href="../static/Pictures/DSC_0930.jpg"></a>

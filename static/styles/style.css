@@ -52,12 +52,12 @@ hr.hr-fade{
 }
 .outset{
     border-style: outset;
-    border-color: rgb(182, 182, 182);
+    border-color: rgb(221, 221, 221);
     border-bottom: hidden;
 }
 .inset{
     border-style: inset;
-    border-color:rgb(182, 182, 182);
+    border-color:rgb(221, 221, 221);
     border-top: hidden;
 }
 .hidden{
@@ -93,14 +93,53 @@ hr.hr-fade{
   }
   
   @media (min-width: 34em) {
+    .cover{
+        object-fit: cover;
+        height: 600px;
+        object-position: 100% 0;
+        
+    }  
+
     .card-columns {
         -webkit-column-count: 1;
         -moz-column-count: 1;
         column-count: 1;
     }
+
+}
+@media(max-width: 48em){
+    .cover{
+        object-fit: cover;
+        height: 500px;
+        object-position: 100% 0;
+        
+    }  
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width:50%;
+        transform: translate(-50%, -50%);
+        color: white;
+      }
 }
 
 @media (min-width: 48em) {
+    .cover{
+        object-fit: cover;
+        height: 600px;
+        
+    }  
+    .centered {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    width:40%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  
+
     .card-columns {
         -webkit-column-count: 2;
         -moz-column-count: 2;
@@ -117,6 +156,12 @@ hr.hr-fade{
 }
 
 @media (min-width: 75em) {
+    .cover{
+        object-fit: cover;
+        height: 600px;
+        object-position: 0 40%;
+        
+    }  
     .card-columns {
         -webkit-column-count: 3;
         -moz-column-count: 3;

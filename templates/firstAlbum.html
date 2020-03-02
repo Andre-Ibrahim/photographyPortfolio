@@ -1,0 +1,28 @@
+{%extends "base.html"%}
+
+{% block content %}
+
+<div class="jumbotron text-center mb-0 font">
+<h3>PORTRAITS</h3>
+<hr class="hr-fade">
+<p>These are a few portraits I took of my friends. For now it's the same for all albumns.</p>
+</div>
+
+<div class="container bg-light p-3">
+    <div class="card-columns">
+
+        {%for src in portrait %}
+        <div class="m-0">
+            <div class="card mb-4 box-shadow flex">
+                <img class="card-img-top" src="../static/Pictures/{{src}}" alt="">
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}
+

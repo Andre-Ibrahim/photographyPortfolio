@@ -21,6 +21,10 @@
     max-height: 380px;
 }
 
+.limit2{
+    max-width: 800px;
+}
+
 .font{
     font-family:  'Montserrat';
 }

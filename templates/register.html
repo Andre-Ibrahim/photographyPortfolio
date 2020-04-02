@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{%block content%}
+
+    	<div class="container-fluid font text-center my-4">
+  			<h1>Sign UP</h1>
+  			<form action="#" method="post">
+
+    			<div class="mt-3">{{ form.username.label }}</div>
+    			<div class="mb-3">{{ form.username }}</div>
+                <div>{{ form.email.label }}</div>
+
+                <div class="mb-3">{{ form.email }}</div>
+                <div>{{ form.password.label }}</div>
+                <div class="mb-3">{{ form.password }}</div>
+                <div>{{ form.submit() }}</div>
+  			</form>
+            <a href="..">SKIP</a>
+		</div>
+        <div class="container-fluid mb-5 font text-center limit2">
+        <p>
+            <h3>Please sign up to get email updates for events and sample images of my latest project.</h3>
+            <h4>Your email will be saved in case you want to contact me</h4>
+            <h4>Please do not enter a password used for other accounts since the database is not properly secured</h4>
+            </p>
+        </div>
+
+{% endblock %}

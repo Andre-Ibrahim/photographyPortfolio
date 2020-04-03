@@ -3,7 +3,7 @@
 
 {%block content%}
 
-    	<div class="container-fluid font text-center my-4">
+    	<div class="container-fluid font text-center my-4" id="signUpTop">
   			<h1>Sign UP</h1>
   			<form action="#" method="post">
 
@@ -14,9 +14,9 @@
                 <div class="mb-3">{{ form.email }}</div>
                 <div>{{ form.password.label }}</div>
                 <div class="mb-3">{{ form.password }}</div>
-                <div>{{ form.submit() }}</div>
+                <div>{{ form.submit(class="btn btn-primary mt-4") }}</div>
   			</form>
-            <a href="..">SKIP</a>
+            <a href=".." class="btn btn-primary py-1 px-4 mt-4">SKIP</a>
 		</div>
         <div class="container-fluid mb-5 font text-center limit2">
         <p>

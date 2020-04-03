@@ -53,12 +53,26 @@ def register():
         email = request.form['email']
         password = request.form['password']
         user_a = users(username, email, password)
+        session['email'] = email
+        session['username'] = username
         db.session.add(user_a)
         db.session.commit()
         return redirect(url_for('index'))
     else:
         form = SignUpForm()
-        return render_template('register.html', form=form)
+        return render_template('register.html', form=form, page='register')
+
+
+@app.route('/login')
+def login():
+
+    return None
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 @app.route('/about')

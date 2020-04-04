@@ -1,33 +1,14 @@
-from flask import Flask, render_template, url_for, request, session, redirect
+from flask import Flask, render_template, url_for, request, session, redirect, flash
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
-import sqlalchemy
-from forms import *
+from flask_bcrypt import Bcrypt
+from forms import SignUpForm , LoginForm
+from Models import users
 
+from init import app
+from init import db
+from init import bcrypt
 
-import forms
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Andre'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
-app.config["SQLALCHEMY_TRACK_MODIFACTIONS"] = False
-app.permanent_session_lifetime = timedelta(minutes=5)
-
-db = SQLAlchemy(app)
-
-
-class users(db.Model):
-    _id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    password = db.Column(db.String(100))
-
-    def __init__(self, name, email, password):
-        self.name = name
-        self.email = email
-        self.password = password
-    def __repr__(self):
-        return f"users('{self.name}', '{self.email}' ,'{self.password}')"
 
 
 # instead of rewriting the card html/boostrap layout for each card
@@ -47,11 +28,12 @@ def index():
 
 @app.route("/register", methods=["POST", "GET"])
 def register():
-    if request.method == 'POST':
+    form = SignUpForm()
+    if form.validate_on_submit():
         session.permanent = True
-        username = request.form['username']
+        username = request.form['name']
         email = request.form['email']
-        password = request.form['password']
+        password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user_a = users(username, email, password)
         session['email'] = email
         session['username'] = username
@@ -59,7 +41,6 @@ def register():
         db.session.commit()
         return redirect(url_for('index'))
     else:
-        form = SignUpForm()
         return render_template('register.html', form=form, page='register')
 
 

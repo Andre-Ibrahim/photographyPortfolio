@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\andib\OneDrive\Desktop\Assinmnent2287\database.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="users" uuid="fe975f99-e8ad-41aa-9544-275f7be88665">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\andib\OneDrive\Desktop\Assinmnent2287\users.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>

@@ -1,8 +1,9 @@
 
 from init import db
+from flask_login import UserMixin
 
 
-class users(db.Model):
+class users(db.Model, UserMixin):
     _id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
@@ -18,3 +19,9 @@ class users(db.Model):
 
     def get_name(self):
         return self.name
+
+    def get_id(self):
+        return self._id
+
+    def get_email(self):
+        return self.email

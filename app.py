@@ -3,12 +3,17 @@ from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from forms import SignUpForm , LoginForm
-from Models import users
+from Models import users as user
 
 from init import app
 from init import db
 from init import bcrypt
+from init import login_manager
+from flask_login import login_user, logout_user, login_required
 
+
+def list_users():
+    return user.query.all()
 
 
 # instead of rewriting the card html/boostrap layout for each card
@@ -19,6 +24,10 @@ albumImg = ["../static/Pictures/_DSC1002_edited-2.jpg", "../static/Pictures/_DSC
             "../static/Pictures/IMG_20190704_211825393.jpg"]
 portrait = ["DSC_0930.jpg", "DSC_0685(2).jpg", "DSC_0665.jpg", "DSC_0019.jpg", "DSC_0572.jpg", "DSC_0535.jpg",
             "DSC_0622.jpg", "DSC_0041.jpg", "1.jpg"]
+
+@login_manager.user_loader
+def load_user(user_id):
+    return user.query.get(int(user_id))
 
 
 @app.route("/")
@@ -34,25 +43,37 @@ def register():
         username = request.form['name']
         email = request.form['email']
         password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user_a = users(username, email, password)
+        user_a = user(username, email, password)
         session['email'] = email
         session['username'] = username
         db.session.add(user_a)
         db.session.commit()
+        login_user(user_a)
         return redirect(url_for('index'))
     else:
         return render_template('register.html', form=form, page='register')
 
 
-@app.route('/login')
+@app.route('/login', methods=["POST", "GET"])
 def login():
-
-    return None
+    form = LoginForm()
+    if form.validate_on_submit():
+        user_a = user.query.filter_by(name=form.username.data).first()
+        if user_a and bcrypt.check_password_hash(user_a.password, form.password.data):
+            login_user(user_a)
+            session['email'] = user_a.email
+            session['username'] = user_a.name
+            return redirect(url_for('index'))
+        else:
+            flash("Wrong username or password please make sure there is no mistake", 'danger')
+    return render_template('login.html', form=form, page='login')
 
 
 @app.route('/logout')
+@login_required
 def logout():
     session.clear()
+    logout_user()
     return redirect(url_for('index'))
 
 
@@ -69,6 +90,11 @@ def contact():
 @app.route('/albums')
 def albums():
     return render_template('albums.html', albumImg=albumImg, page="album")
+
+
+@app.route('/users')
+def users():
+    return render_template("users.html", page="users", users_list=list_users())
 
 
 @app.route("/albums/album")

@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request, session, redirect, f
 from datetime import timedelta
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from forms import SignUpForm , LoginForm
+from forms import SignUpForm , LoginForm, EmailForm
 from Models import users as user
 
 from init import app
@@ -82,9 +82,20 @@ def about():
     return render_template("about.html", page="about")
 
 
-@app.route('/contact')
+@app.route('/contact', methods=["GET", "POST"])
 def contact():
-    return render_template("contact.html", page="contact")
+    form = EmailForm()
+    email_filler = ""
+    name_filler = ""
+    if session.get('email'):
+        email_filler = session.get('email')
+        name_filler = session.get('username')
+    if form.validate_on_submit():
+        # send email here
+
+        return redirect(url_for('index'))
+
+    return render_template("contact.html", page="contact", form=form, email_filler=email_filler, name_filler=name_filler)
 
 
 @app.route('/albums')
@@ -93,8 +104,11 @@ def albums():
 
 
 @app.route('/users')
+@login_required
 def users():
-    return render_template("users.html", page="users", users_list=list_users())
+    if session.get("username") == "AndreIbrahim":
+        return render_template("users.html", page="users", users_list=list_users())
+    return redirect(url_for('index'))
 
 
 @app.route("/albums/album")

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<div class="jumbotron mb-0">
+  <h1 class="display-4">FeedBack</h1>
+  <p class="lead">If you want to leave me a comment for everyone to see this is the place to do it</p>
+  <hr class="my-4">
+  <p>I would love to here your thoughts on my projects</p>
+
+</div>
+
+<table class="table my-0 bg-light">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Feedback</th>
+      <th scope="col">date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <form method="POST">
+      {{ form.csrf_token }}
+      <tr>
+      <th scope="row">{{ session.get('username') }}</th>
+          <td>{{ form.feedback(class="form-control-label feedback") }}<span>{{ form.submit(class="btn btn-primary mx-2") }}</span></td>
+      <td>{{ date }}</td>
+    </tr>
+  </form>
+
+  {% for Feedback in feedback_list[::-1] %}
+    <tr>
+      <th scope="row">{{ Feedback.username }}</th>
+      <td class="feedbackContent">{{ Feedback.content }}</td>
+      <td>{{ Feedback.date }}</td>
+    </tr>
+    {% endfor %}
+
+
+
+
+
+  </tbody>
+</table>
+</div>
+
+
+
+
+{% endblock %}

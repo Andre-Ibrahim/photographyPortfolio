@@ -3,7 +3,7 @@
 
 {%block content%}
 
-    	<div class="container-fluid font text-center my-3" id="signUpTop">
+    	<div class="container-fluid font text-center my-3 bg-light limit2" id="signUpTop">
   			<h1 class="mb-5">Sign UP</h1>
   			<form action="#" class="limit3 container text-center mt-3" method="POST">
                 {{ form.csrf_token }}
@@ -53,7 +53,7 @@
                 </div>
                 <span>{{ form.submit(class="btn btn-success py-1 mx-4") }}</span>
                 <span><a href="/login" class="btn btn-success py-1 px-4 mx-4">Login</a></span>
-                <span><a href=".." class="btn btn-danger py-1 px-4 m-2">SKIP</a></span>
+                <span><a href=".." class="btn btn-danger py-1 px-4 m-2 mb-5">SKIP</a></span>
   			</form>
 
 		</div>

@@ -4,6 +4,15 @@
 
 
 <div class="container bg-light">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
     <img src="../static/Pictures/_DSC0786.jpg" class="img-center pt-2 rounded-circle" alt="" width="65%">
     <section class="pb-4">
         <h2 class="h1-responsive font-weight-bold text-center my-4">Contact Me</h2>
@@ -11,12 +20,15 @@
 
         <div class="row">
             <div class="col-md-9 mb-md-0 mb-5">
-                <form id="contact-form" name="contact-form" action="" method="">
+                <form id="contact-form" name="contact-form" action="" method="POST">
+                    {{ form.csrf_token }}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="md-form mb-0">
                                 {{ form.name(class="form-control", value=name_filler, id="subject") }}
-{#                                <input type="text" id="name" name="name" class="form-control">#}
+
+                                {#
+  <input type="text" id="name" name="name" class="form-control">#}
                                 <label for="name" class="">Your name</label>
                             </div>
                         </div>
@@ -42,9 +54,20 @@
                         <div class="col-md-12">
 
                             <div class="md-form">
+                                {% if not form.message.errors %}
                                 {{ form.message(class="form-control md-textarea", row="2", id="message") }}
-{#                                <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>#}
+                                {% else %}
+                                 {{ form.message(class="form-control md-textarea is-invalid", row="2", id="message") }}
+                                <div class="invalid-feedback">
+                                {% for error in form.message.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                </div>
+                                {% endif %}
+
+                                {#                                <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>#}
                                 <label for="message">Your message</label>
+
                             </div>
 
                         </div>
@@ -52,6 +75,7 @@
                     <div class="text-center text-md-left">
                     <span class="">{{ form.send(class="btn btn-primary py-2 px-5 right") }}</span>
                 </div>
+
 
                 </form>
 
@@ -69,7 +93,7 @@
                     </li>
 
                     <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                        <p>andreKA2@gmail.com</p>
+                        <p class="my-0">photography</p><p class="my-0">portfolioandrei</p><p class="my-0">@gmail.com</p>
                     </li>
                 </ul>
             </div>

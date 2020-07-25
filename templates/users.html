@@ -4,24 +4,30 @@
 
 <div class="container">
 
-<table class="table mt-4">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Email</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for user in users_list %}
-    <tr>
-      <th scope="row">{{ user.get_id() }}</th>
-      <td>{{ user.get_name() }}</td>
-      <td>{{ user.get_email() }}</td>
-    </tr>
+<div class="jumbotron mb-0">
+  <h1 class="display-4">Registered Users</h1>
+  <p class="lead">This is a list of registered users with there email in case you want to contact them by your own means</p>
+  <hr class="my-4">
+  <p>There are currently <b class="display-4">{{ size }}</b> registered to this website</p>
+
+</div>
+<div>
+   <ul class="list-group limituserwidth img-center text-center">
+   {% for user in users_list %}
+       {% if user.get_name() == 'AndreIbrahim' %}
+            <li class="list-group-item active">{{ user.get_name() }}<div>{{ user.get_email() }}</div></li>
+       {% else %}
+           {% if user.get_id() % 2 != 0 %}
+               <li class="list-group-item list-group-item-dark">{{ user.get_name() }}<div>{{ user.get_email() }}</div></li>
+           {% else %}
+               <li class="list-group-item">{{ user.get_name() }}<div>{{ user.get_email() }}</div></li>
+           {% endif %}
+       {% endif %}
+
     {% endfor %}
-  </tbody>
-</table>
+</ul>
+</div>
+
 </div>
 
 

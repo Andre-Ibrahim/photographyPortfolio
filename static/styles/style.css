@@ -1,8 +1,23 @@
-@import "boostrap";
+
 #faintColor{
     background-color: rgba(255, 255, 255, 0.788);
    
 }
+.feedback{
+    height:100%;
+    width: 80%;
+}
+.feedbackContent{
+    height:100%;
+    width: 60%;
+    max-width: 60%;
+    text-align: justify;
+}
+.limituserwidth{
+    max-width: 600px;
+}
+
+
 .right{
     float: right;
 }

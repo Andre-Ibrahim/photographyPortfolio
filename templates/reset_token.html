@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{%block content%}
+
+    	<div class="container-fluid font text-center my-3 bg-light my-5 limit2" id="signUpTop">
+  			<h1 class="mb-5">Reset Password</h1>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h5 class="text-danger mb-2">{{ message }}</h5>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+  			<form action="#" class="limit3 container text-center mt-3" method="POST">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label mb-3") }}
+
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                 <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label mb-3") }}
+
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+
+                <span>{{ form.submit(class="btn btn-success mb-5 py-1 px-3 mx-3") }}</span>
+
+  			</form>
+
+		</div>
+        <div class="container-fluid mb-5 font text-center limit2">
+        </div>
+
+{% endblock %}
